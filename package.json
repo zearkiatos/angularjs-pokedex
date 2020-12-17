@@ -6,7 +6,7 @@
   "scripts": {
     "start": "grunt"
   },
-  "author": "Julian Duque <julianduquej@gmail.com>",
+  "author": "Pedro Capriles <caprilespe@outlook.com>",
   "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",

@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: angularjs-pokedex-app
+    volumes: 
+      - ".:/usr/src/app"
+    ports:
+      - "0.0.0.0:9001:9000"
+    expose:
+      - "9001"
