@@ -7,6 +7,6 @@ COPY . .
 RUN npm install && \
     npm install -g grunt
 
-ENTRYPOINT [ "grunt" ]
+ENTRYPOINT [ "npm","run","start" ]
 
 EXPOSE 9000
