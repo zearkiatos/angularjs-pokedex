@@ -22,10 +22,7 @@
   "homepage": "https://github.com/zearkiatos/angularjs-pokedex#readme",
   "devDependencies": {
     "grunt": "^1.3.0",
-    "grunt-contrib-watch": "^1.1.0"
-  },
-  "dependencies": {
     "grunt-contrib-connect": "^3.0.0",
-    "save-dev": "0.0.1-security"
+    "grunt-contrib-watch": "^1.1.0"
   }
 }
