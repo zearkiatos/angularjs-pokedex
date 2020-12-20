@@ -16,13 +16,17 @@ module.exports = function (grunt) {
         dest: 'public/.tmp'
       },
     },
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
+    copy: {
+      main: {
+        files: [
+          { expand: true, cwd: 'src/assets/', src: ['**'], dest: 'public/assets/'},
+        ]
+      }
+    },
+    concat: {
+      dist: {
+        src: [ 'src/*.js' ],
+        dest: 'public/js/app.js'
       }
     },
     watch: {
@@ -39,7 +43,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-package-modules');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['packageModules', 'connect', 'watch']);
+  grunt.registerTask('default', ['packageModules', 'concat', 'copy', 'connect', 'watch']);
 
 };

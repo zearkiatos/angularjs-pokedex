@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="pokedex">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pokédex</title>
     <script src=".tmp/node_modules/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
   </head>
   <body>
-    <h1>
-      Bulbasaur #001
-    </h1>
-    <h2>Seed Pokemon</h2>
-    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" alt="Bulbasaur"/>
-    <ul>
-      <li>
-        Type: Grass, Poison
-      </li>
-      <li>
-        Weight: xx
-      </li>
-      <li>
-        Height: xx
-      </li>
-      <li>
-        Abilities:
-      </li>
-    </ul>
+    <div ng-controller="PokemonController as pkmCtrl">
+      <h1>
+        {{pkmCtrl.pokemon.name}} #{{pkmCtrl.pokemon.id}}
+      </h1>
+      <h2>{{pkmCtrl.pokemon.species}}</h2>
+      <img src="assets/img/pokemons/{{pkmCtrl.pokemon.name}}.jpg" alt="{{pkmCtrl.pokemon.name}}"/>
+      <h2>Pokédex</h2>
+      <ul>
+        <li>
+          <strong>Type:</strong> {{pkmCtrl.pokemon.type.join(', ')}}
+        </li>
+        <li>
+          <strong>Weight:</strong> {{pkmCtrl.pokemon.weight}}
+        </li>
+        <li>
+          <strong>Height</strong> {{pkmCtrl.pokemon.height}}
+        </li>
+        <li>
+          <strong>Abilities:</strong> {{pkmCtrl.pokemon.abilities.join(', ')}}
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
