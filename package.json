@@ -23,7 +23,10 @@
   "devDependencies": {
     "grunt": "^1.3.0",
     "grunt-contrib-connect": "^3.0.0",
-    "grunt-contrib-watch": "^1.1.0"
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-package-modules": "^1.0.0"
   },
   "dependencies": {
     "angular": "^1.8.2"
