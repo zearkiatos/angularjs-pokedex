@@ -29,4 +29,20 @@
         this.tab = tab;
     };
  });
+
+ app.controller('CommentController', function() {
+    this.comments = [];
+    this.show = false;
+
+    this.toggle = function() {
+        this.show = !this.show;
+    }
+ });
+
+ app.filter('imageify', function() {
+    return function(input, ext) {
+        const url = `assets/img/pokemons/${input.toLowerCase()}.${ext || 'jpg'}`;
+        return url;   
+    };
+ });
 })();
