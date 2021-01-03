@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <script src=".tmp/node_modules/jquery/dist/jquery.min.js"></script>
   <script src=".tmp/node_modules/angular/angular.min.js"></script>
+  <script src=".tmp/node_modules/angular-route/angular-route.min.js"></script>
   <script src=".tmp/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
@@ -35,41 +36,9 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div ng-controller="PokemonController as pkmCtrl">
-      <div class="page-header">
-        <pokemon-name></pokemon-name>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <pokemon-image></pokemon-image>
-        </div>
-        <div class="col-md-6" ng-controller="TabsController as tabsCtrl">
-          <ul class="nav nav-tabs nav-justified">
-            <li ng-class="{active : tabsCtrl.tab === 1}">
-              <a ng-click="tabsCtrl.selectTab(1)">Pokédex</a>
-            </li>
-            <li ng-class="{active : tabsCtrl.tab === 2}">
-              <a ng-click="tabsCtrl.selectTab(2)">Stats</a>
-            </li>
-            <li ng-class="{active : tabsCtrl.tab === 3}">
-              <a ng-click="tabsCtrl.selectTab(3)">Evolution</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div ng-show="tabsCtrl.tab === 1">
-              <pokemon-data></pokemon-data>
-            </div>
-            <div ng-show="tabsCtrl.tab === 2">
-                <pokemon-stats></pokemon-stats>
-            </div>
-            <div ng-show="tabsCtrl.tab === 3">
-              <pokemon-evolution>ƒ</pokemon-evolution>
-            </div>
-          </div>
-        </div>
-        <pokemon-comments></pokemon-comments>
-      </div>
+  <div class="container-fluid">
+    <div ng-view>
+
     </div>
   </div>
 </body>
