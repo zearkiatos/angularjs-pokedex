@@ -30,31 +30,73 @@
         };
     });
 
-    app.controller('CommentController', function () {
-        this.comments = [];
-        this.comment = {
-            anonymous: false,
-            email: "",
-            body: "",
-            date: Date.now()
-        };
-        this.show = false;
+    app.directive("pokemonData", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-data.html'
+        }; 
+    });
 
-        this.toggle = function () {
-            this.show = !this.show;
-        };
+    app.directive("pokemonStats", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-stats.html'
+        }; 
+    });
 
-        this.anonymousChanged = function () {
-            if (this.comment.anonymous) {
-                this.comment.email = "";
-            }
-        };
+    app.directive("pokemonEvolution", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-evolution.html'
+        }; 
+    });
 
-        this.addComment = function() {
-            this.comment.date = Date.now();
-            this.comments.push(this.comment);
-            this.comment = {};
-        };
+    app.directive("pokemonName", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-name.html'
+        }; 
+    });
+
+    app.directive("pokemonImage", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-image.html'
+        }; 
+    });
+
+    app.directive("pokemonComments", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/pokemon-comments.html',
+            controller: function() {
+                this.comments = [];
+                this.comment = {
+                    anonymous: false,
+                    email: "",
+                    body: "",
+                    date: Date.now()
+                };
+                this.show = false;
+        
+                this.toggle = function () {
+                    this.show = !this.show;
+                };
+        
+                this.anonymousChanged = function () {
+                    if (this.comment.anonymous) {
+                        this.comment.email = "";
+                    }
+                };
+        
+                this.addComment = function () {
+                    this.comment.date = Date.now();
+                    this.comments.push(this.comment);
+                    this.comment = {};
+                };
+            },
+            controllerAs: 'cmtCtrl'
+        }; 
     });
 
     app.filter('imageify', function () {

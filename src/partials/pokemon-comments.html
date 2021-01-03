@@ -1,0 +1,45 @@
+<button ng-hide="cmtCtrl.show" class="btn btn-primary" ng-click="cmtCtrl.toggle()"> Show comments <span
+        class="badge">{{comtCtrl.comments.length}}</span></button>
+<div ng-show="cmtCtrl.show" class="panel panal-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">Comments <button class="close pull-right" ng-click="cmtCtrl.toggle()">&times;</button>
+        </h1>
+    </div>
+    <div class="panel-body">
+        <form name="commentForm" class="form-horizontal" role="form"
+            ng-submit="commentForm.$valid && cmtCtrl.addComment()" novalidate>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <textarea ng-model="cmtCtrl.comment.body"
+                        placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control"
+                        required></textarea>
+                </div>
+                <div class="col-sm-4">
+                    <input ng-model="cmtCtrl.comment.email" ng-disabled="cmtCtrl.comment.anonymous" type="email"
+                        placeholder="Please enter your email address" class="form-control"
+                        ng-required="!cmtCtrl.comment.anonymous" />
+                    <label>
+                        <input ng-model="cmtCtrl.comment.anonymous" id="anonymous"
+                            ng-change="cmtCtrl.anonymousChanged()" type="checkbox" />
+                        Anonymous
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-lg">Comment</button>
+                </div>
+            </div>
+        </form>
+        <div ng-if="!commentForm.$valid" class="alert alert-danger">
+            Invalid Form
+        </div>
+        <blockquote ng-repeat="comment in cmtCtrl.comments">
+            <p>{{comment.body}}</p>
+            <footer>
+                Comment by
+                <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>
+                <em ng-if="comment.anonymous">Anonymous</em>
+                on <span>{{comment.date | date : 'medium'}}</span>
+            </footer>
+        </blockquote>
+    </div>
+</div>

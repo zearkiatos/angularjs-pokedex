@@ -6,4 +6,5 @@ dist
 public/js
 public/assets/
 public/css/
-public/fonts
+public/fonts/
+public/partials/
