@@ -22,6 +22,7 @@ module.exports = function (grunt) {
           { expand: true, cwd: 'src/assets/', src: ['**'], dest: 'public/assets/'},
           { expand: true, cwd: 'src/css/', src: ['**'], dest: 'public/css/'},
           { expand: true, cwd: 'src/fonts', src: ['**'], dest: 'public/fonts'},
+          { expand: true, cwd: 'src/partials', src: ['**'], dest: 'public/partials'},
           { expand: true, cwd: 'src/partials', src: ['**'], dest: 'public/partials'}
         ]
       }
@@ -30,6 +31,18 @@ module.exports = function (grunt) {
       dist: {
         src: [ 'src/*.js' ],
         dest: 'public/js/app.js'
+      },
+      controllers: {
+        src: ['src/controllers/*.js'],
+        dest: 'public/js/controllers.js'
+      },
+      filters: {
+        src: ['src/filters/*.js'],
+        dest: 'public/js/filters.js'
+      },
+      directives: {
+        src: ['src/directives/*.js'],
+        dest: 'public/js/directives.js'
       }
     },
     watch: {
