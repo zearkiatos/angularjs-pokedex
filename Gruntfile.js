@@ -24,7 +24,8 @@ module.exports = function (grunt) {
           { expand: true, cwd: 'src/fonts', src: ['**'], dest: 'public/fonts'},
           { expand: true, cwd: 'src/partials', src: ['**'], dest: 'public/partials'},
           { expand: true, cwd: 'src/partials', src: ['**'], dest: 'public/partials'},
-          { expand: true, cwd: 'src/views', src: ['**'], dest: 'public/views'}
+          { expand: true, cwd: 'src/views', src: ['**'], dest: 'public/views'},
+          { expand: true, cwd: 'src/db/mocks', src: ['**'], dest: 'public/db/mocks'}
         ]
       }
     },
