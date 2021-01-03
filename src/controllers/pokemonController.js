@@ -1,24 +1,13 @@
 appControllers.controller("PokemonController", [
   "$scope",
-  function ($scope) {
-    $scope.pokemon = {
-      id: "001",
-      name: "Bulbasaur",
-      species: "Seed Pokemon",
-      type: ["Grass", "Poison"],
-      height: "2'4",
-      weight: "15.2 lbs",
-      abilities: ["Overgrow", "Chlorophyll"],
-      stats: {
-        hp: 45,
-        attack: 49,
-        defense: 49,
-        "sp.atk": 65,
-        "sp.def": 65,
-        speed: 45,
-        total: 318,
-      },
-      evolutions: ["Bulbasaur", "Ivysaur", "Venusaur"],
-    };
+  "$routeParams",
+  "pokemonService",
+  function ($scope, $routeParams, pokemonService) {
+    $scope.pokemon = {};
+    const name = $routeParams.name;
+
+    pokemonService.getPokemon(name).then(function (data) {
+      $scope.pokemon = data;
+    });
   },
 ]);

@@ -15,20 +15,12 @@ body {
   margin-bottom: 20px;
 }
 
-.form-group {
-  padding: 10px;
-}
-
-.ng-invalid.ng-dirty {
-  border-color: red;
-}
-
-.ng-valid.ng-dirty {
-  border-color:green;
-}
-
 .nav-tabs {
   margin-bottom: 10px;
+}
+
+.form-group {
+  padding: 10px;
 }
 
 .type {
@@ -70,7 +62,7 @@ body {
   border: solid 1px #c183c1;
 }
 
-.type-eletric {
+.type-electric {
   background-color: #f8d030;
   border: solid 1px #a1871f;
 }
@@ -123,4 +115,46 @@ body {
 .type-fairy {
   background-color: #ee99ac;
   border: solid 1px #9b6470;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #D9230F;
+}
+
+.ng-valid.ng-dirty {
+  border-color: #468847;
+}
+
+.pokemon {
+  height: 350px;
+}
+
+.pokemon h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.pokemon h1 > small {
+  color: #ccc;
+}
+
+.pokemon img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 200px;
+  max-height: 220px;
+}
+
+.pokemon .panel-body {
+  position: relative;
+  height: 250px;
+}
+
+.pokemon pokemon-type {
+  font-size: 22px;
 }

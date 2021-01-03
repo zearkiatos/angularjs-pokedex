@@ -4,6 +4,7 @@
     "pokedex.controllers",
     "pokedex.filters",
     "pokedex.directives",
+    "pokedex.services"
   ]);
 
   app.config([
@@ -14,9 +15,13 @@
           templateUrl: "views/pokedex.html",
           controller: "PokedexController"
         })
-        .when("/pokemon/:id", {
+        .when("/pokemon/:name", {
           templateUrl: "views/pokemon.html",
           controller: "PokemonController",
+        })
+        .when("/:type",{
+            templateUrl: "views/pokedex.html",
+            controller: "PokedexController"
         })
         .otherwise({
           redirectTo: "/",

@@ -1,14 +1,18 @@
 appControllers.controller("PokedexController", [
   "$scope",
-  "$http",
-  function ($scope, $http) {
+  "$routeParams",
+  "pokemonService",
+  function ($scope, $routeParams, pokemonService) {
+    const type = $routeParams.type;
     $scope.pokemons = [];
-
-    $http({
-      method: "GET",
-      url: "/db/mocks/pokemons.json",
-    }).then(function (response) {
-      $scope.pokemons = response.data;
-    });
+    if (type) {
+      pokemonService.getPokemonsByType(type).then(function (data) {
+        $scope.pokemons = data;
+      });
+    } else {
+      pokemonService.getPokemons().then(function (data) {
+        $scope.pokemons = data;
+      });
+    }
   },
 ]);

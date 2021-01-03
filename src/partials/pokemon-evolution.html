@@ -1,5 +1,5 @@
-<div class="text-center" ng-repeat="pokemon in pokemon.evolutions">
-  <a href="#">
+<div class="text-center" ng-repeat="pokemon in pokemon.evolution">
+  <a href="/#!pokemon/{{pokemon.name | normalize}}">
     <img src="{{pokemon | imageify}}" alt="{{pokemon}}" width="160" />
     <p>
       <strong>{{pokemon}}</strong>
