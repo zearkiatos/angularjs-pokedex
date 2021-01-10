@@ -126,13 +126,21 @@ body {
 }
 
 .pokemon {
-  height: 350px;
+  padding: 20px;
+  margin-bottom: 10px;
+  border: solid 1px #D9230F;
+  border-radius: 20px;
+}
+
+.pokemon:hover {
+  border: solid 3px #D9230F;
 }
 
 .pokemon h1 {
   margin: 0;
-  color: #fff;
+  color: #444444;
   font-size: 18px;
+  
 }
 
 .pokemon h1 > small {
@@ -140,14 +148,7 @@ body {
 }
 
 .pokemon img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  max-width: 200px;
-  max-height: 220px;
+  width: 300px;
 }
 
 .pokemon .panel-body {
