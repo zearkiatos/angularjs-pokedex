@@ -9,26 +9,26 @@
     <div class="col-md-6">
       <pokemon-image></pokemon-image>
     </div>
-    <div class="col-md-6" ng-controller="TabsController as tabsCtrl">
+    <div class="col-md-6" ng-controller="TabsController">
       <ul class="nav nav-tabs nav-justified">
-        <li ng-class="{active : tabsCtrl.tab === 1}">
-          <a ng-click="tabsCtrl.selectTab(1)">Pokédex</a>
+        <li ng-class="{active : isActive(1)}">
+          <a ng-click="selectTab(1)">Pokédex</a>
         </li>
-        <li ng-class="{active : tabsCtrl.tab === 2}">
-          <a ng-click="tabsCtrl.selectTab(2)">Stats</a>
+        <li ng-class="{active : isActive(2)}">
+          <a ng-click="selectTab(2)">Stats</a>
         </li>
-        <li ng-class="{active : tabsCtrl.tab === 3}">
-          <a ng-click="tabsCtrl.selectTab(3)">Evolution</a>
+        <li ng-class="{active : isActive(3)}">
+          <a ng-click="selectTab(3)">Evolution</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div ng-show="tabsCtrl.tab === 1">
+        <div ng-show="isActive(1)">
           <pokemon-data></pokemon-data>
         </div>
-        <div ng-show="tabsCtrl.tab === 2">
+        <div ng-show="isActive(2)">
           <pokemon-stats></pokemon-stats>
         </div>
-        <div ng-show="tabsCtrl.tab === 3">
+        <div ng-show="isActive(3)">
           <pokemon-evolution>ƒ</pokemon-evolution>
         </div>
       </div>

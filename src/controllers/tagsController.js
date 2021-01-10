@@ -1,8 +1,12 @@
 
-appControllers.controller('TabsController', function () {
-    this.tab = 1;
+appControllers.controller('TabsController', ["$scope", function ($scope) {
+    $scope.tab = 1;
 
-    this.selectTab = function (tab) {
-        this.tab = tab;
+    $scope.selectTab = function (tab) {
+        $scope.tab = tab;
     };
-})
+
+    $scope.isActive = function(tab) {
+        return $scope.tab === tab
+    }
+}]);
