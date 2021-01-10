@@ -32,7 +32,7 @@
         <div ng-if="!commentForm.$valid" class="alert alert-danger">
             Invalid Form
         </div>
-        <blockquote ng-repeat="comment in comments">
+        <blockquote ng-repeat="comment in comments | orderBy: '-date'">
             <p>{{comment.body}}</p>
             <footer>
                 Comment by
