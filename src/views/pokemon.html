@@ -1,4 +1,7 @@
-<div>
+<div ng-if="!pokemon.name">
+  <error message="Pokémon not found"></error>
+</div>
+<div ng-if="pokemon.name">
   <div class="page-header">
     <pokemon-name></pokemon-name>
   </div>
