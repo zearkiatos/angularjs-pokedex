@@ -125,30 +125,14 @@ body {
   border-color: #468847;
 }
 
-.pokemon {
-  padding: 20px;
-  margin-bottom: 10px;
-  border: solid 1px #D9230F;
-  border-radius: 20px;
-}
-
-.pokemon:hover {
-  border: solid 3px #D9230F;
-}
-
 .pokemon h1 {
   margin: 0;
-  color: #444444;
   font-size: 18px;
   
 }
 
 .pokemon h1 > small {
   color: #ccc;
-}
-
-.pokemon img {
-  width: 300px;
 }
 
 .pokemon .panel-body {
@@ -158,4 +142,31 @@ body {
 
 .pokemon pokemon-type {
   font-size: 22px;
+}
+
+.pokemon-box {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.pokemon-box .item {
+  flex: 8;
+  width:256px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  margin-right:5px;
+  border: solid 1px #D9230F;
+  border-radius: 20px;
+}
+
+.pokemon-img {
+  width: 128px !important;
+  height: 128px;
+}
+
+.pokemon-header {
+  color:#fff;
+  background-color:#D9230F;
+  padding: 10px;
+  border-radius: 20px 20px 0 0px;
 }
