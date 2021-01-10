@@ -7,6 +7,10 @@
     "pokemon.services"
   ]);
 
+  app.run(function($rootScope) {
+    $rootScope.title = 'Pokédex';
+  })
+
   app.config([
     "$routeProvider",
     function ($routeProvider) {
