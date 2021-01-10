@@ -3,12 +3,15 @@
     <h1>Pokédex
         <small class="pull-right">Showing <span class="badge">{{pokemons.length}}</span> Pokemons</small>
     </h1>
+    <h2 ng-if="type"><span class="label type-{{type | lowercase}}">{{type}}</span></h2>
   </div>
   <div class="pokemon" ng-repeat="pokemon in pokemons">
       <a href="#!/pokemon/{{pokemon.name | normalize}}">
         <pokemon-name></pokemon-name>
         <pokemon-image></pokemon-image>
-        <pokemon-type></pokemon-type>
+        <div class="text-center">
+          <pokemon-type></pokemon-type>
+        </div>
       </a>
   </div>
 </div>

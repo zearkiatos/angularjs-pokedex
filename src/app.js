@@ -4,7 +4,7 @@
     "pokedex.controllers",
     "pokedex.filters",
     "pokedex.directives",
-    "pokedex.services"
+    "pokemon.services"
   ]);
 
   app.config([
@@ -18,6 +18,7 @@
         .when("/pokemon/:name", {
           templateUrl: "views/pokemon.html",
           controller: "PokemonController",
+          controllerAs: "pkmCtrl"
         })
         .when("/:type",{
             templateUrl: "views/pokedex.html",

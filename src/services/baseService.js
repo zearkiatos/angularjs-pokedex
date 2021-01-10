@@ -1,1 +1,1 @@
-const appServices = angular.module('pokedex.services', []);
+const appServices = angular.module('pokemon.services', []);

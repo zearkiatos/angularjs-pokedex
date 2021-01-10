@@ -2,7 +2,9 @@ appServices.factory("pokemonService", [
   "$http",
   "$q",
   "$filter",
-  function ($http, $q, $filter) {
+  "$window",
+  function ($http, $q, $filter, $window) {
+    const localStorage = $window.localStorage;
     const normalize = $filter("normalize");
     function getPokemons() {
       const deferred = $q.defer();
@@ -42,10 +44,32 @@ appServices.factory("pokemonService", [
       });
       return deferred.promise;
     }
+
+    function saveComment(pokemon, comment) {
+      let comments = getComments(pokemon);
+
+      comments.push(comment);
+
+      localStorage.setItem(pokemon, JSON.stringify(comments));
+    }
+
+    function getComments(pokemon) {
+      let comments = localStorage.getItem(pokemon);
+
+      if (!comments) {
+        comments = [];
+      }
+      else {
+        comments = JSON.parse(comments);
+      }
+      return comments;
+    }
     return {
       getPokemons,
       getPokemon,
       getPokemonsByType,
+      saveComment,
+      getComments
     };
   },
 ]);
