@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "angular": "^1.8.2",
+    "angular-md5": "^0.1.10",
     "angular-route": "^1.8.2",
     "bootstrap": "^4.5.3",
     "bootswatch": "^4.5.3",

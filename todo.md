@@ -10,7 +10,7 @@
 
 ✅ Implement a search form by name (with automatic preview)
 
-Show avatar in comments (hint: you can use gravatar filter in angular-md5 module)
+✅ Show avatar in comments (hint: you can use gravatar filter in angular-md5 module)
 
 Implement a rating system and create a TOP 10 Pokémons by Rating (hint: you can use angular-ui / ui-bootstrap)
 

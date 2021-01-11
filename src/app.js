@@ -1,6 +1,7 @@
 (function () {
   const app = angular.module("pokedex", [
     "ngRoute",
+    "angular-md5",
     "pokedex.controllers",
     "pokedex.filters",
     "pokedex.directives",

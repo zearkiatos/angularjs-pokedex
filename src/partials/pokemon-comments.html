@@ -33,13 +33,22 @@
             Invalid Form
         </div>
         <blockquote ng-repeat="comment in comments | orderBy: '-date'">
-            <p>{{comment.body}}</p>
-            <footer>
-                Comment by
-                <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>
-                <em ng-if="comment.anonymous">Anonymous</em>
-                on <span>{{comment.date | date : 'medium'}}</span>
-            </footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <img class="rounded-circle" src="http://www.gravatar.com/avatar/{{ comment.email | gravatar }}" />
+                    </div>
+                    <div class="col-10">
+                        <p>{{comment.body}}</p>
+                    </div>
+                </div>
+                <footer>
+                    Comment by
+                    <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>
+                    <em ng-if="comment.anonymous">Anonymous</em>
+                    on <span>{{comment.date | date : 'medium'}}</span>
+                </footer>
+            </div>
         </blockquote>
     </div>
 </div>
