@@ -5,6 +5,7 @@ appControllers.controller("PokedexController", [
   "pokemonService",
   function ($scope, $routeParams, $rootScope, pokemonService) {
     const type = $routeParams.type;
+    $scope.search = ''
     $rootScope.title = 'Pokédex';
     $scope.pokemons = [];
     if (type) {

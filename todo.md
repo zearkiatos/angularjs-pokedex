@@ -1,14 +1,14 @@
-Show an error if the Pokémon doesn't exist
+✅ Show an error if the Pokémon doesn't exist
 
-Implement Pokémon Card as a Custom Directive
+✅ Implement Pokémon Card as a Custom Directive
 
-Implement dynamic title like 'Pokédex | Bulbasaur' (hint: $rootScope y ng-bind)
+✅ Implement dynamic title like 'Pokédex | Bulbasaur' (hint: $rootScope y ng-bind)
 
-Change TabsController to use $scope and implement isActive function to remove the logic in the template
+✅ Change TabsController to use $scope and implement isActive function to remove the logic in the template
 
-Order comments by date, new comments must go first
+✅ Order comments by date, new comments must go first
 
-Implement a search form by name (with automatic preview)
+✅ Implement a search form by name (with automatic preview)
 
 Show avatar in comments (hint: you can use gravatar filter in angular-md5 module)
 
