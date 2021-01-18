@@ -6,7 +6,14 @@
     <h2 ng-if="type"><span class="label type-{{type | lowercase}}">{{type}}</span></h2>
   </div>
   <div class="container">
-    <pokemon-search></pokemon-search>
+    <div class="row">
+      <div class="col-10">
+        <pokemon-search></pokemon-search>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary btn-red">Show top 10</button>
+      </div>
+    </div>
     <div class="row">
       <div ng-repeat="pokemon in pokemons | filter:search">
         <pokemon-card></pokemon-card>

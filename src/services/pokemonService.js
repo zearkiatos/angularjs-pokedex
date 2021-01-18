@@ -53,6 +53,26 @@ appServices.factory("pokemonService", [
       localStorage.setItem(pokemon, JSON.stringify(comments));
     }
 
+    function savePokemonRaiting(pokemonId, raiting) {
+      let totalRaiting = raiting + getRaitings(pokemonId);
+
+      localStorage.setItem(`raiting-${pokemonId}`, totalRaiting);
+    }
+
+
+    function savePokemonVotes(pokemonId) {
+      let votes = getVotesQuantity(pokemonId) + 1;
+
+      localStorage.setItem(`votes-${pokemonId}`, votes);
+    }
+
+    function getStart(pokemonId) {
+      const raiting = getRaitings(pokemonId);
+      const raitingThreeRules = raiting / 5;
+      const start = parseInt((raitingThreeRules * 0.01) * 5);
+      return start;
+    }
+
     function getComments(pokemon) {
       let comments = localStorage.getItem(pokemon);
 
@@ -64,12 +84,39 @@ appServices.factory("pokemonService", [
       }
       return comments;
     }
+
+    function getRaitings(pokemonId) {
+      let raiting = localStorage.getItem(`raiting-${pokemonId}`);
+
+      if (!raiting) {
+        raiting = 0;
+      }
+
+      return parseInt(raiting);
+
+    }
+
+    function getVotesQuantity(pokemonId) {
+      let votes = localStorage.getItem(`votes-${pokemonId}`);
+
+      if (!votes) {
+        votes = 0;
+      }
+
+      return parseInt(votes)
+    }
+
     return {
       getPokemons,
       getPokemon,
       getPokemonsByType,
+      getRaitings,
+      getVotesQuantity,
       saveComment,
-      getComments
+      savePokemonRaiting,
+      savePokemonVotes,
+      getComments,
+      getStart
     };
   },
 ]);
