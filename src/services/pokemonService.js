@@ -106,6 +106,26 @@ appServices.factory("pokemonService", [
       return parseInt(votes)
     }
 
+    function getPokemonsTopTen() {
+      const pokemons = getPokemons().then(function (data) {
+        if (Object.keys(data).length > 0) {
+          deferred.resolve(data);
+        } else {
+          deferred.reject();
+        }
+      });
+
+      const pokemonsMapper = pokemons.map(pokemon => {
+        const raiting = getRaitings(pokemon.id);
+        return {
+          pokemon,
+          raiting
+        }
+      });
+
+      return pokemonsMapper.sort(pokemon => pokemon.raiting).slice(0, 9);
+    }
+
     return {
       getPokemons,
       getPokemon,
@@ -116,7 +136,8 @@ appServices.factory("pokemonService", [
       savePokemonRaiting,
       savePokemonVotes,
       getComments,
-      getStart
+      getStart,
+      getPokemonsTopTen
     };
   },
 ]);

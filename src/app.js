@@ -29,6 +29,10 @@
             templateUrl: "views/pokedex.html",
             controller: "PokedexController"
         })
+        .when("/pokemon-top",{
+          templateUrl: "views/pokemon-top.html",
+          controller: "PokemonTopController"
+      })
         .otherwise({
           redirectTo: "/",
         });
