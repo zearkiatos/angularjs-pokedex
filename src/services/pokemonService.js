@@ -107,23 +107,22 @@ appServices.factory("pokemonService", [
     }
 
     function getPokemonsTopTen() {
-      const pokemons = getPokemons().then(function (data) {
+      const deferred = $q.defer();
+      getPokemons().then(function (data) {
         if (Object.keys(data).length > 0) {
-          deferred.resolve(data);
+          const pokemonsMapper = data.map(pokemon => {
+            const raiting = getRaitings(pokemon.id);
+            pokemon.raiting = raiting;
+            return pokemon;
+          });
+          const pokemonsTopTen = pokemonsMapper.sort((a, b) => b.raiting - a.raiting).slice(0, 10);
+          deferred.resolve(pokemonsTopTen);
         } else {
           deferred.reject();
         }
       });
 
-      const pokemonsMapper = pokemons.map(pokemon => {
-        const raiting = getRaitings(pokemon.id);
-        return {
-          pokemon,
-          raiting
-        }
-      });
-
-      return pokemonsMapper.sort(pokemon => pokemon.raiting).slice(0, 9);
+      return deferred.promise;
     }
 
     return {

@@ -222,3 +222,14 @@ body {
   color: white;
 }
 
+.top-number {
+  font-weight: bold;
+  font-size:64pt;
+  color:#D9230F;
+}
+
+.raiting {
+  font-weight: bold;
+  font-size: 32pt;
+  color:gold;
+}
