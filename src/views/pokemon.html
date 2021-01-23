@@ -8,16 +8,17 @@
   <div class="row">
     <div class="col-md-6">
       <pokemon-image></pokemon-image>
+      <pokemon-raiting id="{{pokemon.id}}"></pokemon-raiting>
     </div>
     <div class="col-md-6" ng-controller="TabsController">
       <ul class="nav nav-tabs nav-justified">
-        <li ng-class="{active : isActive(1)}">
+        <li class="options" ng-class="{active : isActive(1)}">
           <a ng-click="selectTab(1)">Pokédex</a>
         </li>
-        <li ng-class="{active : isActive(2)}">
+        <li class="options" ng-class="{active : isActive(2)}">
           <a ng-click="selectTab(2)">Stats</a>
         </li>
-        <li ng-class="{active : isActive(3)}">
+        <li class="options" ng-class="{active : isActive(3)}">
           <a ng-click="selectTab(3)">Evolution</a>
         </li>
       </ul>

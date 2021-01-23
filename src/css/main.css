@@ -177,3 +177,59 @@ body {
 .mb-2 {
   margin-bottom: 1em;
 }
+
+.options {
+  min-width: 80px !important;
+}
+
+.raiting-list {
+  list-style-type: none;
+  margin-left:5em;
+}
+
+.raiting-list li{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.startInactive:before {
+  content: '✩';
+  font-size:18pt;
+}
+
+.startActive:before {
+  content: '⭐️';
+  font-size:12pt;
+}
+
+.startActive:hover {
+  cursor:pointer;
+  font-weight: bold;
+}
+
+.startInactive:hover {
+  cursor:pointer;
+  font-weight: bold;
+  content: '⭐️';
+}
+
+.startInactive:hover .startInactive:before {
+  content: '⭐️';
+}
+
+.btn-red {
+  background-color: #D9230F;
+  color: white;
+}
+
+.top-number {
+  font-weight: bold;
+  font-size:64pt;
+  color:#D9230F;
+}
+
+.raiting {
+  font-weight: bold;
+  font-size: 32pt;
+  color:gold;
+}
