@@ -10,3 +10,5 @@ public/fonts/
 public/partials/
 public/views/
 public/db
+.env
+config/

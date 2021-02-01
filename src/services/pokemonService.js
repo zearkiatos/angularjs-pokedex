@@ -3,16 +3,18 @@ appServices.factory("pokemonService", [
   "$q",
   "$filter",
   "$window",
-  function ($http, $q, $filter, $window) {
+  "config",
+  function ($http, $q, $filter, $window, config) {
     const localStorage = $window.localStorage;
+    const { POKEMON_BASE_API } = config;
     const normalize = $filter("normalize");
     function getPokemons() {
       const deferred = $q.defer();
       $http({
         method: "GET",
-        url: "/db/mocks/pokemons.json",
+        url: `${POKEMON_BASE_API}pokemon`,
       }).then(function (response) {
-        deferred.resolve(response.data);
+        deferred.resolve(response.data.data);
       });
       return deferred.promise;
     }
