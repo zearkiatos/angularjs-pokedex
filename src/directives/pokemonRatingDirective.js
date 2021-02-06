@@ -1,10 +1,10 @@
-appDirectives.directive("pokemonRaiting", ['pokemonService', function (pokemonService) {
+appDirectives.directive("pokemonRating", ['pokemonService', function (pokemonService) {
     return {
         restrict: 'E',
         scope: {
             pokemonId: '@id'
         },
-        templateUrl: '../partials/pokemon-raiting.html',
+        templateUrl: '../partials/pokemon-rating.html',
         link: function (scope, element, attributes) {
             attributes.$observe('pokemonId', function (value) {     
                 if (value) {
@@ -12,6 +12,6 @@ appDirectives.directive("pokemonRaiting", ['pokemonService', function (pokemonSe
                 }
             });
         },
-        controller: 'RaitingController',
+        controller: 'RatingController',
     };
 }]);

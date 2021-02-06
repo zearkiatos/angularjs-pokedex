@@ -182,12 +182,12 @@ body {
   min-width: 80px !important;
 }
 
-.raiting-list {
+.rating-list {
   list-style-type: none;
   margin-left:5em;
 }
 
-.raiting-list li{
+.rating-list li{
   display: inline-block;
   margin-left: 5px;
 }
@@ -228,7 +228,7 @@ body {
   color:#D9230F;
 }
 
-.raiting {
+.rating {
   font-weight: bold;
   font-size: 32pt;
   color:gold;

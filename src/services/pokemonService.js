@@ -62,23 +62,40 @@ appServices.factory("pokemonService", [
       localStorage.setItem(pokemon, JSON.stringify(comments));
     }
 
-    function savePokemonRaiting(pokemonId, raiting) {
-      let totalRaiting = raiting + getRaitings(pokemonId);
-
-      localStorage.setItem(`raiting-${pokemonId}`, totalRaiting);
+    function savePokemonRating(pokemonId, rating) {
+      const deferred = $q.defer();
+      const payload = {
+        pokemonId,
+        rating
+      }
+      $http({
+        method: "POST",
+        url: `${POKEMON_BASE_API}rating`,
+        data: payload
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
+      });
+      return deferred.promise;
     }
 
-
-    function savePokemonVotes(pokemonId) {
-      let votes = getVotesQuantity(pokemonId) + 1;
-
-      localStorage.setItem(`votes-${pokemonId}`, votes);
+    async function getTotalRating(pokemonId) {
+      const totalRating = await getRatings(pokemonId).then(function (data) {
+        let ratingCount = 0;
+        if (data) {
+          for (let item of data) {
+            ratingCount += item.rating;
+          }
+        }
+        return ratingCount;
+      });
+      return totalRating;
     }
 
-    function getStart(pokemonId) {
-      const raiting = getRaitings(pokemonId);
-      const raitingThreeRules = raiting / 5;
-      const start = parseInt((raitingThreeRules * 0.01) * 5);
+    async function getStart(pokemonId) {
+      let rating = 0;
+      rating = await getTotalRating(pokemonId);
+      const ratingThreeRules = rating / 5;
+      const start = parseInt((ratingThreeRules * 0.01) * 5);
       return start;
     }
 
@@ -94,37 +111,39 @@ appServices.factory("pokemonService", [
       return comments;
     }
 
-    function getRaitings(pokemonId) {
-      let raiting = localStorage.getItem(`raiting-${pokemonId}`);
-
-      if (!raiting) {
-        raiting = 0;
-      }
-
-      return parseInt(raiting);
+    function getRatings(pokemonId) {
+      const deferred = $q.defer();
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}rating?pokemonId=${pokemonId}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
+      });
+      return deferred.promise;
 
     }
 
     function getVotesQuantity(pokemonId) {
-      let votes = localStorage.getItem(`votes-${pokemonId}`);
-
-      if (!votes) {
-        votes = 0;
-      }
-
-      return parseInt(votes)
+      const deferred = $q.defer();
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}rating?pokemonId=${pokemonId}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data.length);
+      });
+      return deferred.promise;
     }
 
     function getPokemonsTopTen() {
       const deferred = $q.defer();
       getPokemons().then(function (data) {
         if (Object.keys(data).length > 0) {
-          const pokemonsMapper = data.map(pokemon => {
-            const raiting = getRaitings(pokemon.id);
-            pokemon.raiting = raiting;
+          const pokemonsMapper = data.map(async pokemon => {
+            const rating = await getTotalRating(pokemon.id);
+            pokemon.rating = rating;
             return pokemon;
           });
-          const pokemonsTopTen = pokemonsMapper.sort((a, b) => b.raiting - a.raiting).slice(0, 10);
+          const pokemonsTopTen = pokemonsMapper.sort((a, b) => b.rating - a.rating).slice(0, 10);
           deferred.resolve(pokemonsTopTen);
         } else {
           deferred.reject();
@@ -138,11 +157,10 @@ appServices.factory("pokemonService", [
       getPokemons,
       getPokemon,
       getPokemonsByType,
-      getRaitings,
+      getRatings,
       getVotesQuantity,
       saveComment,
-      savePokemonRaiting,
-      savePokemonVotes,
+      savePokemonRating,
       getComments,
       getStart,
       getPokemonsTopTen,
