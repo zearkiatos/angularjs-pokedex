@@ -9,7 +9,13 @@ appControllers.controller("PokemonController", [
     $rootScope.title = `Pokédex | ${name}`;
 
     pokemonService.getPokemon(name).then(function (data) {
-      $scope.pokemon = data;
+      const pokemon = data;
+      pokemonService.getPokemonEvolution(pokemon.id).then(function(response) {
+        $scope.pokemon = {
+          ...pokemon,
+          evolution: response
+        };
+      });
     });
   },
 ]);

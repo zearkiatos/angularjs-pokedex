@@ -22,15 +22,22 @@ appServices.factory("pokemonService", [
     function getPokemon(name) {
       const nameNormalized = normalize(name);
       const deferred = $q.defer();
-      getPokemons().then(function (data) {
-        const pokemon = data.find(
-          (pokemon) => normalize(pokemon.name) === nameNormalized
-        );
-        if (Object.keys(pokemon).length > 0) {
-          deferred.resolve(pokemon);
-        } else {
-          deferred.reject();
-        }
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}pokemon/${nameNormalized}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
+      });
+      return deferred.promise;
+    }
+
+    function getPokemonEvolution(id) {
+      const deferred = $q.defer();
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}pokemon/${id}/evolution`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
       });
       return deferred.promise;
     }
@@ -138,7 +145,8 @@ appServices.factory("pokemonService", [
       savePokemonVotes,
       getComments,
       getStart,
-      getPokemonsTopTen
+      getPokemonsTopTen,
+      getPokemonEvolution
     };
   },
 ]);
