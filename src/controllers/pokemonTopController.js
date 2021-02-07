@@ -23,10 +23,10 @@ appControllers.controller('PokemonTopController', ["$scope", "$rootScope", "$q",
     const pokemonTopMapper = async (pokemonTop) => {
         const pokemons = await pokemonService.getPokemons();
         const pokemonMapped = pokemonTop.map((pokemon) => {
-            const name = pokemons.find(p => p.pokemonId === pokemonTop.pokemonId).name;
+            const pokemonFound = pokemons.find(p => p.id === pokemon.pokemonId);
             return {
                 ...pokemon,
-                name
+                name: pokemonFound.name
             }
         });
         return pokemonMapped;
