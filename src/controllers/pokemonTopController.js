@@ -3,7 +3,7 @@ appControllers.controller('PokemonTopController', ["$scope", "$rootScope", "poke
 
     $rootScope.title = 'Pokemons top 10';
 
-    $scope.init = async function() {
+    $scope.init = function() {
         pokemonService.getPokemonsTopTen().then(function(data) {
             $scope.pokemonsTopTen = data;
         });
