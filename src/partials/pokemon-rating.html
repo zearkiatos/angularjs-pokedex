@@ -1,0 +1,22 @@
+<div class="container">
+    <ul class="rating-list">
+        <li>
+            <div class="startInactive" ng-click="vote(1)" ng-mouseover="showStart(1)" ng-class="{startActive : starts[0]}"></div>
+        </li>
+        <li>
+            <div class="startInactive" ng-click="vote(2)" ng-mouseover="showStart(2)" ng-class="{startActive : starts[1]}"></div>
+        </li>
+        <li>
+            <div class="startInactive" ng-click="vote(3)" ng-mouseover="showStart(3)" ng-class="{startActive : starts[2]}"></div>
+        </li>
+        <li>
+            <div class="startInactive" ng-click="vote(4)" ng-mouseover="showStart(4)" ng-class="{startActive : starts[3]}"></div>
+        </li>
+        <li>
+            <div class="startInactive" ng-click="vote(5)" ng-mouseover="showStart(5)" ng-class="{startActive : starts[4]}"></div>
+        </li>
+        <li>
+            {{ratingQuantity}} rating
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,1 @@
+const appServices = angular.module('pokemon.services', []);

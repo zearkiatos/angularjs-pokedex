@@ -1,0 +1,1 @@
+const appControllers = angular.module('pokedex.controllers', []);

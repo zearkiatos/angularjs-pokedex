@@ -1,2 +1,14 @@
-.DS_Store
 node_modules
+*.log
+.DS_STORE
+.tmp
+dist
+public/js
+public/assets/
+public/css/
+public/fonts/
+public/partials/
+public/views/
+public/db
+.env
+config/

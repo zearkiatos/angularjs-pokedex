@@ -1,0 +1,1 @@
+const appDirectives = angular.module('pokedex.directives', []);

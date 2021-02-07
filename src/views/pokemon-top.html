@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Top of pokemon</h1>
+  <div ng-if="pokemonsTopTen.length > 0">
+    <div ng-repeat="pokemon in pokemonsTopTen">
+      <div class="row">
+        <div class="col-6">
+          <h1 class="top-number">{{$index + 1}}</h1>
+          <h3 class="rating">{{pokemon.rating}}</h3>
+        </div>
+        <div class="col-6">
+          <pokemon-card></pokemon-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

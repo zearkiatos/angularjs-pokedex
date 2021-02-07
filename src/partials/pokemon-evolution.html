@@ -1,0 +1,9 @@
+<div class="text-center" ng-repeat="pokemon in pokemon.evolution">
+  <a href="/#!pokemon/{{pokemon.name | normalize}}">
+    <img ng-src="{{pokemon.image}}" alt="{{pokemon.name}}" width="160" />
+    <p>
+      <strong>{{pokemon.name}}</strong>
+    </p>
+  </a>
+  <span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
+</div>

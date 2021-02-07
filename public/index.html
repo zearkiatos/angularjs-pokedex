@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html ng-app="pokedex">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{title && 'Pokédex | ' + title || 'Pokédex' }}</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-            <img src="img/logo.png">
-            Pokédex
-          </a>
-        </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href=".tmp/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href=".tmp/node_modules/bootswatch/dist/simplex/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src=".tmp/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src=".tmp/node_modules/angular/angular.min.js"></script>
+  <script src=".tmp/node_modules/angular-route/angular-route.min.js"></script>
+  <script src=".tmp/node_modules/angular-md5/angular-md5.min.js"></script>
+  <script src=".tmp/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="assets/img/logo.png" alt="Pokédex">
+          Pokédex
+        </a>
       </div>
     </div>
-    <div class="container-fluid">
-      <div ng-view></div>
+  </div>
+  <div class="container">
+    <div ng-view>
+
     </div>
-    <script src="js/lib/underscore-min.js"></script>
-    <script src="js/lib/angular.min.js"></script>
-    <script src="js/lib/angular-route.min.js"></script>
-    <script src="js/lib/angular-resource.min.js"></script>
-    <script src="js/lib/angular-md5.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/services.js"></script>
-  </body>
+  </div>
+</body>
+
 </html>
