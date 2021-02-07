@@ -2,10 +2,8 @@ appServices.factory("pokemonService", [
   "$http",
   "$q",
   "$filter",
-  "$window",
   "config",
-  function ($http, $q, $filter, $window, config) {
-    const localStorage = $window.localStorage;
+  function ($http, $q, $filter, config) {
     const { POKEMON_BASE_API } = config;
     const normalize = $filter("normalize");
     function getPokemons() {
@@ -144,22 +142,14 @@ appServices.factory("pokemonService", [
       return deferred.promise;
     }
 
-    function getPokemonsTopTen() {
+    function getPokemonsTopTen(limit) {
       const deferred = $q.defer();
-      getPokemons().then(function (data) {
-        if (Object.keys(data).length > 0) {
-          const pokemonsMapper = data.map(async pokemon => {
-            const rating = await getTotalRating(pokemon.id);
-            pokemon.rating = rating;
-            return pokemon;
-          });
-          const pokemonsTopTen = pokemonsMapper.sort((a, b) => b.rating - a.rating).slice(0, 10);
-          deferred.resolve(pokemonsTopTen);
-        } else {
-          deferred.reject();
-        }
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}rating/top?limit=${limit}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
       });
-
       return deferred.promise;
     }
 
