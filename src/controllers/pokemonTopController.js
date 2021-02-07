@@ -4,10 +4,20 @@ appControllers.controller('PokemonTopController', ["$scope", "$rootScope", "$q",
     $rootScope.title = 'Pokemons top 10';
 
     $scope.init = function() {
-        pokemonService.getPokemonsTopTen(10).then(async function(data) {
-            const pokemonsTopTen = await pokemonTopMapper(data);
-            $scope.pokemonsTopTen = pokemonsTopTen;
+
+        getPokemonTopTen().then(data => {
+            $scope.pokemonsTopTen = data
         });
+    }
+
+    function getPokemonTopTen () {
+        const deferred = $q.defer();
+        pokemonService.getPokemonsTopTen(10).then(function(data) {
+            pokemonTopMapper(data).then(function(response) {
+                deferred.resolve(response);
+            });
+        });
+        return deferred.promise;
     }
 
     const pokemonTopMapper = async (pokemonTop) => {
@@ -15,8 +25,8 @@ appControllers.controller('PokemonTopController', ["$scope", "$rootScope", "$q",
         const pokemonMapped = pokemonTop.map((pokemon) => {
             const name = pokemons.find(p => p.pokemonId === pokemonTop.pokemonId).name;
             return {
-                pokemon,
-                ...name
+                ...pokemon,
+                name
             }
         });
         return pokemonMapped;
