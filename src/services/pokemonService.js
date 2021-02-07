@@ -87,8 +87,8 @@ appServices.factory("pokemonService", [
       return deferred.promise;
     }
 
-    function getTotalRating(pokemonId) {
-      const totalRating = getRatings(pokemonId).then(function (data) {
+    async function getTotalRating(pokemonId) {
+      const totalRating = await getRatings(pokemonId).then(function (data) {
         let ratingCount = 0;
         if (data) {
           for (let item of data) {
@@ -97,7 +97,6 @@ appServices.factory("pokemonService", [
         }
         return ratingCount;
       });
-      console.log(totalRating);
       return totalRating;
     }
 
@@ -143,26 +142,14 @@ appServices.factory("pokemonService", [
       return deferred.promise;
     }
 
-    function getPokemonsTopTen() {
+    function getPokemonsTopTen(limit) {
       const deferred = $q.defer();
-      getPokemons().then(function (data) {
-        if (Object.keys(data).length > 0) {
-          const pokemonsMapper = data.map(pokemon => {
-            let rating = 0;
-            getTotalRating(pokemon.id).then(function(response) {
-              rating = response;
-            });
-            pokemon.rating = rating;
-            return pokemon;
-          });
-          const pokemonsTopTen = pokemonsMapper.sort((a, b) => (b.rating - a.rating)).slice(0, 10);
-          console.log(pokemonsTopTen);
-          deferred.resolve(pokemonsTopTen);
-        } else {
-          deferred.reject();
-        }
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}rating/top?limit=${limit}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
       });
-
       return deferred.promise;
     }
 
