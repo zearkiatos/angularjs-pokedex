@@ -3,22 +3,33 @@ appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonS
         restrict: 'E',
         templateUrl: '../partials/pokemon-comments.html',
         scope: {
-            name: '@name'
+            name: '@name',
+            id: '@id'
         },
         link: function (scope, element, attributes) {
             attributes.$observe('name', function (value) {
                 if (value) {
                     scope.name = value;
-                    scope.comments = pokemonService.getComments(value);
+                }
+            });
+
+            attributes.$observe('id', function (value) {
+                if (value) {
+                    scope.id = value;
+                    pokemonService.getComments(value).then(function(data) {
+                       scope.comments = data;
+                   });
                 }
             });
         },
         controller: function ($scope) {
-            $scope.comments = pokemonService.getComments($scope.name);
+             pokemonService.getComments($scope.id).then(function(data) {
+                $scope.comments = data;
+            });
             $scope.comment = {
                 anonymous: false,
-                email: "",
-                body: "",
+                user: "",
+                comment: "",
                 date: Date.now()
             };
             $scope.show = false;
@@ -29,14 +40,16 @@ appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonS
 
             $scope.anonymousChanged = function () {
                 if ($scope.comment.anonymous) {
-                    $scope.comment.email = "";
+                    $scope.comment.user = "";
                 }
             };
 
             $scope.addComment = function () {
                 $scope.comment.date = Date.now();
-                pokemonService.saveComment($scope.name, $scope.comment);
-                $scope.comments = pokemonService.getComments($scope.name);
+                pokemonService.saveComment($scope.id, $scope.comment);
+                pokemonService.getComments($scope.id).then(function(data) {
+                    $scope.comments = data;
+                });
                 $scope.comment = {};
             };
         },

@@ -54,12 +54,23 @@ appServices.factory("pokemonService", [
       return deferred.promise;
     }
 
-    function saveComment(pokemon, comment) {
-      let comments = getComments(pokemon);
-
-      comments.push(comment);
-
-      localStorage.setItem(pokemon, JSON.stringify(comments));
+    function saveComment(pokemonId, comment) {
+      const deferred = $q.defer();
+      const payload = {
+        pokemonId,
+        comment: comment.comment,
+        user: comment.user,
+        anonymous: comment.anonymous,
+        date: comment.date
+      }
+      $http({
+        method: "POST",
+        url: `${POKEMON_BASE_API}comment`,
+        data: payload
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
+      });
+      return deferred.promise;
     }
 
     function savePokemonRating(pokemonId, rating) {
@@ -99,16 +110,15 @@ appServices.factory("pokemonService", [
       return start;
     }
 
-    function getComments(pokemon) {
-      let comments = localStorage.getItem(pokemon);
-
-      if (!comments) {
-        comments = [];
-      }
-      else {
-        comments = JSON.parse(comments);
-      }
-      return comments;
+    function getComments(pokemonId) {
+      const deferred = $q.defer();
+      $http({
+        method: "GET",
+        url: `${POKEMON_BASE_API}comment?pokemonId=${pokemonId}`,
+      }).then(function (response) {
+        deferred.resolve(response.data.data);
+      });
+      return deferred.promise;
     }
 
     function getRatings(pokemonId) {
