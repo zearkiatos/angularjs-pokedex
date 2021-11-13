@@ -57,7 +57,7 @@ module.exports = function (grunt) {
           livereload: true
         }
       }
-    }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
