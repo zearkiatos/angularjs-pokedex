@@ -35,19 +35,19 @@ module.exports = function (grunt) {
       },
       controllers: {
         src: ['src/controllers/*.js'],
-        dest: 'public/js/controllers.js'
+        dest: 'public/js/controllers/index.js'
       },
       filters: {
         src: ['src/filters/*.js'],
-        dest: 'public/js/filters.js'
+        dest: 'public/js/filters/index.js'
       },
       directives: {
         src: ['src/directives/*.js'],
-        dest: 'public/js/directives.js'
+        dest: 'public/js/directives/index.js'
       },
       services: {
         src: ['src/services/*.js'],
-        dest: 'public/js/services.js'
+        dest: 'public/js/services/index.js'
       }
     },
     watch: {

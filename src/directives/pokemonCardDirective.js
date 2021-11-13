@@ -4,3 +4,4 @@ appDirectives.directive("pokemonCard", function () {
         templateUrl: '../partials/pokemon-card.html'
     };
 });
+
