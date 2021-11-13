@@ -28,7 +28,7 @@ jobs:
     - name: Build docker 🐳
       run: docker build . -t=angularjs-pokedex-app:ghb-$GITHUB_RUN_NUMBER
     - name: Build application
-      run: npm run start
+      run: npm run build
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:

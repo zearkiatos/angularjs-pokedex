@@ -69,4 +69,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['packageModules', 'concat', 'copy', 'connect', 'watch']);
 
+  grunt.registerTask('build', ['packageModules', 'concat', 'copy']);
+
 };

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "grunt",
-    "build": "grunt uglify"
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",
