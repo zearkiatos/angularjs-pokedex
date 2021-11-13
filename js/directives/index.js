@@ -14,6 +14,8 @@ appDirectives.directive("pokemonCard", function () {
         templateUrl: '../partials/pokemon-card.html'
     };
 });
+
+
 appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonService) {
     return {
         restrict: 'E',
