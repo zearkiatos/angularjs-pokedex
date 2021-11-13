@@ -27,6 +27,8 @@ jobs:
       run: export PUBLIC_URL=https://zearkiatos.github.io/angularjs-pokedex/
     - name: Build docker 🐳
       run: docker build . -t=angularjs-pokedex-app:ghb-$GITHUB_RUN_NUMBER
+    - name: Build application
+      run: npm run start
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
