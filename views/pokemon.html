@@ -1,0 +1,39 @@
+<div ng-if="!pokemon.name">
+  <error message="Pokémon not found"></error>
+</div>
+<div ng-if="pokemon.name">
+  <div class="page-header">
+    <pokemon-name></pokemon-name>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <pokemon-image></pokemon-image>
+      <pokemon-rating id="{{pokemon.id}}"></pokemon-rating>
+    </div>
+    <div class="col-md-6" ng-controller="TabsController">
+      <ul class="nav nav-tabs nav-justified">
+        <li class="options" ng-class="{active : isActive(1)}">
+          <a ng-click="selectTab(1)">Pokédex</a>
+        </li>
+        <li class="options" ng-class="{active : isActive(2)}">
+          <a ng-click="selectTab(2)">Stats</a>
+        </li>
+        <li class="options" ng-class="{active : isActive(3)}">
+          <a ng-click="selectTab(3)">Evolution</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div ng-show="isActive(1)">
+          <pokemon-data></pokemon-data>
+        </div>
+        <div ng-show="isActive(2)">
+          <pokemon-stats></pokemon-stats>
+        </div>
+        <div ng-show="isActive(3)">
+          <pokemon-evolution>ƒ</pokemon-evolution>
+        </div>
+      </div>
+    </div>
+    <pokemon-comments id={{pokemon.id}} name={{pokemon.name}}></pokemon-comments>
+  </div>
+</div>
