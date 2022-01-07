@@ -1,6 +1,6 @@
 appDirectives.directive("pokemonSearch", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-search.html'
+        templateUrl: '/partials/pokemon-search.html'
     };
 });

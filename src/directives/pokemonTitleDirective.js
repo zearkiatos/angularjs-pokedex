@@ -1,6 +1,6 @@
 appDirectives.directive("pokemonTitle", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-title.html'
+        templateUrl: '/partials/pokemon-title.html'
     };
 });

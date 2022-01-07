@@ -1,7 +1,7 @@
 appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonService) {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-comments.html',
+        templateUrl: '/partials/pokemon-comments.html',
         scope: {
             name: '@name',
             id: '@id'
