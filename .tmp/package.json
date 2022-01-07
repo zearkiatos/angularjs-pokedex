@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/zearkiatos/angularjs-pokedex/issues"
   },
-  "homepage": "https://zearkiatos.github.io/angularjs-pokedex/",
+  "homepage": ".",
   "devDependencies": {
     "grunt": "^1.4.1",
     "grunt-contrib-concat": "^1.0.1",
