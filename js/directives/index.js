@@ -2,7 +2,7 @@ const appDirectives = angular.module('pokedex.directives', []);
 appDirectives.directive("error", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/error.html',
+        templateUrl: '/partials/error.html',
         scope: {
             message: '@message'
         },
@@ -11,7 +11,7 @@ appDirectives.directive("error", function () {
 appDirectives.directive("pokemonCard", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-card.html'
+        templateUrl: '/partials/pokemon-card.html'
     };
 });
 
@@ -19,7 +19,7 @@ appDirectives.directive("pokemonCard", function () {
 appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonService) {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-comments.html',
+        templateUrl: '/partials/pokemon-comments.html',
         scope: {
             name: '@name',
             id: '@id'
@@ -77,25 +77,25 @@ appDirectives.directive("pokemonComments", ['pokemonService', function (pokemonS
 appDirectives.directive("pokemonData", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-data.html'
+        templateUrl: '/partials/pokemon-data.html'
     }; 
 });
 appDirectives.directive("pokemonEvolution", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-evolution.html'
+        templateUrl: '/partials/pokemon-evolution.html'
     };
 });
 appDirectives.directive("pokemonImage", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-image.html'
+        templateUrl: '/partials/pokemon-image.html'
     };
 });
 appDirectives.directive("pokemonName", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-name.html'
+        templateUrl: '/partials/pokemon-name.html'
     };
 });
 appDirectives.directive("pokemonRating", ['pokemonService', function (pokemonService) {
@@ -104,7 +104,7 @@ appDirectives.directive("pokemonRating", ['pokemonService', function (pokemonSer
         scope: {
             pokemonId: '@id'
         },
-        templateUrl: '../partials/pokemon-rating.html',
+        templateUrl: '/partials/pokemon-rating.html',
         link: function (scope, element, attributes) {
             attributes.$observe('pokemonId', function (value) {     
                 if (value) {
@@ -118,24 +118,24 @@ appDirectives.directive("pokemonRating", ['pokemonService', function (pokemonSer
 appDirectives.directive("pokemonSearch", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-search.html'
+        templateUrl: '/partials/pokemon-search.html'
     };
 });
 appDirectives.directive("pokemonStats", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-stats.html'
+        templateUrl: '/partials/pokemon-stats.html'
     };
 });
 appDirectives.directive("pokemonTitle", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-title.html'
+        templateUrl: '/partials/pokemon-title.html'
     };
 });
 appDirectives.directive("pokemonType", function () {
     return {
         restrict: 'E',
-        templateUrl: '../partials/pokemon-type.html'
+        templateUrl: '/partials/pokemon-type.html'
     };
 });
