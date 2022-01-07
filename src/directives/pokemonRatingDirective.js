@@ -4,7 +4,7 @@ appDirectives.directive("pokemonRating", ['pokemonService', function (pokemonSer
         scope: {
             pokemonId: '@id'
         },
-        templateUrl: '../partials/pokemon-rating.html',
+        templateUrl: '/partials/pokemon-rating.html',
         link: function (scope, element, attributes) {
             attributes.$observe('pokemonId', function (value) {     
                 if (value) {

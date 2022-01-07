@@ -12,3 +12,4 @@ public/views/
 public/db
 .env
 config/
+build
